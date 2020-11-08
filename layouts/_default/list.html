@@ -1,4 +1,13 @@
 {{ define "main" }}
+    {{ if .Content }}
+    <div class="article-wrapper u-cf">
+        <article class="article">
+            <div class="content">
+                {{- .Content }}
+            </div>
+        </article>
+    </div>
+    {{ end }}
     {{ $paginator := .Paginate (where .Data.Pages "Type" "ne" "page") (index .Site.Params "paginate" | default 7) }}
     {{ range  where .Paginator.Pages "Type" "ne" "page" }}
         <div class="article-wrapper u-cf">
